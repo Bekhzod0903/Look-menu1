@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Foods</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .food-item {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 200px;
+        }
+        .food-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .messages {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+        }
+        .messages li {
+            list-style: none;
+            color: green; /* Success message color */
+        }
+    </style>
+</head>
+<body>
+    <h1>Foods page</h1>
+
+    <form method="get" action="{% url 'product:food-list' %}">
+        <input type="text" name="q" placeholder="Search for foods...">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="container">
+        {% for item in food %}
+            <div class="food-item">
+                <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                <br>
+                cklick ><a href="{% url 'product:food-detail' item.pk %}">{{ item.name }}</a>< click
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+
+<h6>by Begzod<h6>
+</body>
+</html>

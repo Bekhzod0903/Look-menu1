@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for item in cart.items.all %}
+            <li>{{ item.food.name }} - {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'product:food-list' %}">Continue Shopping</a>
+</body>
+</html>

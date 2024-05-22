@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ food.name }}</title>
+</head>
+<body>
+    <h1>{{ food.name }}</h1>
+    <img src="{{ food.image.url }}" alt="{{ food.name }}">
+    <p>Category: {{ food.category.name }}</p>
+    <p>Price: ${{ food.price }}</p>
+    <a href="{% url 'product:add-to-cart' food.pk %}">Add to Cart</a>
+</body>
+</html>
